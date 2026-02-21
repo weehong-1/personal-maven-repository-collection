@@ -1,0 +1,188 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+        "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+        "https://checkstyle.org/dtds/configuration_1_3.dtd">
+<module name="Checker">
+    <property name="severity" value="error"/>
+    <property name="fileExtensions" value="java, properties, xml"/>
+
+    <module name="BeforeExecutionExclusionFileFilter">
+        <property name="fileNamePattern" value="module\-info\.java$"/>
+    </module>
+    <module name="SuppressionFilter">
+        <property name="file" value="${basedir}/checkstyle-suppressions.xml"/>
+        <property name="optional" value="true"/>
+    </module>
+    <module name="FileLength">
+        <property name="max" value="2000"/>
+    </module>
+    <module name="LineLength">
+        <property name="fileExtensions" value="java"/>
+        <property name="max" value="120"/>
+        <property name="ignorePattern" value="^package.*|^import.*"/>
+    </module>
+    <module name="FileTabCharacter"/>
+    <module name="RegexpSingleline">
+        <property name="format" value="\s+$"/>
+        <property name="message" value="Line has trailing spaces."/>
+    </module>
+
+    <!-- Custom check to prohibit more than 1 consecutive blank line (works for all file types) -->
+    <module name="com.weehong.checkstyle.checks.NoMultipleBlankLinesFileCheck"/>
+
+    <!-- Suppress MethodName check for test files to allow underscore-based naming (e.g. given_when_then) -->
+    <module name="SuppressionSingleFilter">
+        <property name="files" value=".*Test\.java$"/>
+        <property name="checks" value="MethodName"/>
+    </module>
+
+    <module name="TreeWalker">
+        <module name="ConstantName"/>
+        <module name="LocalFinalVariableName"/>
+        <module name="LocalVariableName"/>
+        <module name="MemberName"/>
+        <!-- Test files (*Test.java) are exempt from this rule via SuppressionSingleFilter above;
+             only non-test code is subject to the default camelCase-only pattern -->
+        <module name="MethodName"/>
+        <module name="PackageName"/>
+        <module name="ParameterName"/>
+        <module name="StaticVariableName"/>
+        <module name="TypeName"/>
+        <module name="AvoidStarImport"/>
+        <module name="IllegalImport">
+            <property name="illegalClasses"
+                      value="org.junit.Test, org.junit.Before, org.junit.After"/>
+        </module>
+        <module name="RedundantImport"/>
+
+        <!-- Custom check for unused imports with enhanced duplicate detection -->
+        <module name="com.weehong.checkstyle.checks.UnusedImportCheck"/>
+
+        <module name="RegexpSinglelineJava">
+            <property name="format"
+                      value="(?&lt;!import\s)(?&lt;!static\s)(?&lt;!package\s)(?&lt;!@)(?&lt;!@Pointcut\(&quot;[^&quot;]*)\bjava\.[a-zA-Z0-9_.]+\.[A-Z][A-Za-z0-9_]*(\.[a-zA-Z0-9_]+)*\b"/>
+            <property name="message"
+                      value="Avoid using fully qualified class names (e.g., java.util.HashMap). Use import statements instead."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+        <module name="RegexpSinglelineJava">
+            <property name="format"
+                      value="(?&lt;!import\s)(?&lt;!static\s)(?&lt;!package\s)(?&lt;!@)(?&lt;!@Pointcut\(&quot;[^&quot;]*)\bcom\.horaion\.[a-zA-Z0-9_.]+\.[A-Z][A-Za-z0-9_]*(\.[a-zA-Z0-9_]+)*\b"/>
+            <property name="message"
+                      value="Fully qualified class names are strictly prohibited. Use import statements instead."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+        <module name="RegexpSinglelineJava">
+            <property name="format"
+                      value="(?&lt;!import\s)(?&lt;!static\s)(?&lt;!package\s)(?&lt;!@)(?&lt;!@Pointcut\(&quot;[^&quot;]*)\borg\.springframework\.[a-zA-Z0-9_.]+\.[A-Z][A-Za-z0-9_]*(\.[a-zA-Z0-9_]+)*\b"/>
+            <property name="message"
+                      value="Fully qualified class names are strictly prohibited. Use import statements instead."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+        <module name="MethodLength">
+            <property name="max" value="80"/>
+        </module>
+        <module name="ParameterNumber">
+            <property name="max" value="4"/>
+            <property name="tokens" value="METHOD_DEF"/>
+            <property name="ignoreOverriddenMethods" value="true"/>
+        </module>
+        <module name="CyclomaticComplexity">
+            <property name="max" value="10"/>
+        </module>
+        <module name="NPathComplexity">
+            <property name="max" value="1000"/>
+        </module>
+        <module name="NestedIfDepth">
+            <property name="max" value="3"/>
+        </module>
+        <module name="EmptyForIteratorPad"/>
+        <module name="GenericWhitespace"/>
+        <module name="MethodParamPad"/>
+        <module name="NoWhitespaceAfter"/>
+        <module name="NoWhitespaceBefore"/>
+        <module name="OperatorWrap"/>
+        <module name="ParenPad"/>
+        <module name="TypecastParenPad"/>
+        <module name="WhitespaceAfter"/>
+        <module name="WhitespaceAround"/>
+        <module name="Indentation">
+            <property name="basicOffset" value="4"/>
+            <property name="braceAdjustment" value="0"/>
+            <property name="caseIndent" value="4"/>
+            <property name="throwsIndent" value="4"/>
+            <property name="lineWrappingIndentation" value="4"/>
+        </module>
+        <module name="ModifierOrder"/>
+        <module name="RedundantModifier"/>
+        <module name="AvoidNestedBlocks"/>
+        <module name="EmptyBlock"/>
+        <module name="LeftCurly"/>
+        <module name="NeedBraces"/>
+        <module name="RightCurly"/>
+        <module name="EmptyStatement"/>
+        <module name="EqualsHashCode"/>
+        <module name="HiddenField">
+            <property name="severity" value="ignore"/>
+        </module>
+        <module name="IllegalInstantiation"/>
+        <module name="InnerAssignment"/>
+        <module name="MissingSwitchDefault"/>
+        <module name="MultipleVariableDeclarations"/>
+        <module name="SimplifyBooleanExpression"/>
+        <module name="SimplifyBooleanReturn"/>
+        <module name="MagicNumber">
+            <property name="ignoreNumbers" value="0,1,-1"/>
+            <property name="ignoreAnnotation" value="true"/>
+        </module>
+        <module name="FinalClass"/>
+        <module name="VisibilityModifier">
+            <property name="packageAllowed" value="true"/>
+            <property name="protectedAllowed" value="true"/>
+        </module>
+        <module name="ArrayTypeStyle"/>
+        <module name="UpperEll"/>
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="@Autowired\s+private"/>
+            <property name="message" value="Field injection is not allowed. Use constructor injection instead."/>
+            <property name="ignoreComments" value="true"/>
+        </module>
+        <module name="RegexpSinglelineJava">
+            <property name="format" value="System\.out\.print|printStackTrace"/>
+            <property name="message" value="Use a logger instead of System.out or printStackTrace."/>
+        </module>
+        <module name="SuppressWarningsHolder"/>
+
+        <!-- Custom check for if spacing -->
+        <module name="com.weehong.checkstyle.checks.IfSpacingCheck"/>
+
+        <!-- Custom check for while spacing -->
+        <module name="com.weehong.checkstyle.checks.WhileSpacingCheck"/>
+
+        <!-- Custom check for for spacing -->
+        <module name="com.weehong.checkstyle.checks.ForSpacingCheck"/>
+
+        <!-- Custom check for switch spacing -->
+        <module name="com.weehong.checkstyle.checks.SwitchSpacingCheck"/>
+
+        <!-- Custom check for method parameter line breaks -->
+        <module name="com.weehong.checkstyle.checks.MethodParameterLineBreakCheck"/>
+
+        <!-- Custom check to prohibit @SuppressWarnings annotation -->
+        <module name="com.weehong.checkstyle.checks.NoSuppressWarningsCheck"/>
+
+        <!-- Custom check to prohibit type casting -->
+        <module name="com.weehong.checkstyle.checks.NoTypeCastCheck"/>
+
+        <!-- Custom check for ternary operator line breaks -->
+        <module name="com.weehong.checkstyle.checks.TernaryOperatorLineBreakCheck"/>
+
+        <!-- Custom check to prohibit var keyword -->
+        <module name="com.weehong.checkstyle.checks.NoVarKeywordCheck"/>
+
+        <!-- Custom check for Swagger/OpenAPI annotation line breaks -->
+        <module name="com.weehong.checkstyle.checks.SwaggerAnnotationLineBreakCheck">
+            <property name="maxPropertiesSameLine" value="2"/>
+        </module>
+    </module>
+</module>

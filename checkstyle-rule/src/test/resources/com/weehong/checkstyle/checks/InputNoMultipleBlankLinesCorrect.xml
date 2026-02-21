@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="value1" value="test"/>
+
+    <property name="value2" value="test2"/>
+
+    <module name="TestModule">
+        <property name="enabled" value="true"/>
+    </module>
+
+</configuration>

@@ -1,0 +1,11 @@
+# Maven
+/target/
+pom.xml.versionsBackup
+# IDE
+.idea/
+.vscode/
+*.iml
+# OS
+.DS_Store
+# Temporary settings file for deployment
+temp-settings.xml
