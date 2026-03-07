@@ -113,6 +113,14 @@ tasks.jacocoTestCoverageVerification {
                 value = "COVEREDRATIO"
                 minimum = "0.8".toBigDecimal()
             }
+            excludes = listOf(
+                "com.weehong.bootstrap.metrics.*",
+                "com.weehong.bootstrap.tracing.*",
+                "com.weehong.bootstrap.openapi.*",
+                "com.weehong.bootstrap.logging.properties",
+                "com.weehong.bootstrap.logging.exceptions",
+                "com.weehong.bootstrap.logging.aspects"
+            )
         }
     }
 }

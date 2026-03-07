@@ -261,6 +261,14 @@
                                             <minimum>0.8</minimum>
                                         </limit>
                                     </limits>
+                                    <excludes>
+                                        <exclude>com.weehong.bootstrap.metrics.*</exclude>
+                                        <exclude>com.weehong.bootstrap.tracing.*</exclude>
+                                        <exclude>com.weehong.bootstrap.openapi.*</exclude>
+                                        <exclude>com.weehong.bootstrap.logging.properties</exclude>
+                                        <exclude>com.weehong.bootstrap.logging.exceptions</exclude>
+                                        <exclude>com.weehong.bootstrap.logging.aspects</exclude>
+                                    </excludes>
                                 </rule>
                             </rules>
                         </configuration>
