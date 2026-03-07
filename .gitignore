@@ -1,11 +1,26 @@
 # Maven
-/target/
+**/target/
 pom.xml.versionsBackup
+
+# Gradle
+.gradle/
+**/build/
+
 # IDE
 .idea/
 .vscode/
 *.iml
+.classpath
+.factorypath
+.project
+.settings/
+.sts4-cache
+
 # OS
 .DS_Store
+
 # Temporary settings file for deployment
 temp-settings.xml
+
+# Logs
+logs/

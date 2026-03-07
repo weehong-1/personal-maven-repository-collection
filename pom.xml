@@ -11,6 +11,7 @@
 
     <modules>
         <module>checkstyle-rule</module>
+        <module>bootstrap</module>
     </modules>
 
     <distributionManagement>
