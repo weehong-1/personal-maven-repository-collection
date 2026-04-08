@@ -82,11 +82,6 @@
         <module name="MethodLength">
             <property name="max" value="80"/>
         </module>
-        <module name="ParameterNumber">
-            <property name="max" value="4"/>
-            <property name="tokens" value="METHOD_DEF"/>
-            <property name="ignoreOverriddenMethods" value="true"/>
-        </module>
         <module name="CyclomaticComplexity">
             <property name="max" value="10"/>
         </module>
@@ -184,5 +179,14 @@
         <module name="com.weehong.checkstyle.checks.SwaggerAnnotationLineBreakCheck">
             <property name="maxPropertiesSameLine" value="2"/>
         </module>
+
+        <!-- Custom check to prohibit hardcoded string literals -->
+        <module name="com.weehong.checkstyle.checks.NoHardcodedStringCheck"/>
+
+        <!-- Custom check for unused private methods -->
+        <module name="com.weehong.checkstyle.checks.UnusedMethodCheck"/>
+
+        <!-- Custom check for unused local variables and parameters -->
+        <module name="com.weehong.checkstyle.checks.UnusedVariableCheck"/>
     </module>
 </module>
