@@ -294,6 +294,12 @@ public class UnusedMethodCheck extends AbstractCheck {
 
     private void checkUnusedMethods() {
         for (Map.Entry<String, Set<String>> entry : declaredPrivateMethods.entrySet()) {
+            String methodName = entry.getKey();
+
+            if (invokedSignatures.contains(methodName)) {
+                continue;
+            }
+
             Set<String> signatures = entry.getValue();
 
             for (String signature : signatures) {

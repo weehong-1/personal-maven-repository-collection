@@ -4,13 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>com.weehong.maven</groupId>
-        <artifactId>personal-maven-repository-collection-parent</artifactId>
-        <version>1.0.0</version>
-    </parent>
-
+    <groupId>com.weehong.maven</groupId>
     <artifactId>checkstyle-rule</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>checkstyle-rule</name>
@@ -59,6 +55,14 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/weehong-1/personal-maven-repository-collection</url>
+        </repository>
+    </distributionManagement>
 
     <build>
         <resources>

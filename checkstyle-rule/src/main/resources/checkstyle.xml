@@ -30,10 +30,10 @@
     <!-- Custom check to prohibit more than 1 consecutive blank line (works for all file types) -->
     <module name="com.weehong.checkstyle.checks.NoMultipleBlankLinesFileCheck"/>
 
-    <!-- Suppress MethodName check for test files to allow underscore-based naming (e.g. given_when_then) -->
+    <!-- Suppress checks for test files -->
     <module name="SuppressionSingleFilter">
         <property name="files" value=".*Test\.java$"/>
-        <property name="checks" value="MethodName"/>
+        <property name="checks" value="MethodName|NoHardcodedString|UnusedMethod|UnusedVariable"/>
     </module>
 
     <module name="TreeWalker">
@@ -188,5 +188,8 @@
 
         <!-- Custom check for unused local variables and parameters -->
         <module name="com.weehong.checkstyle.checks.UnusedVariableCheck"/>
+
+        <!-- Custom check for blank line before return statements -->
+        <module name="com.weehong.checkstyle.checks.ReturnStatementSpacingCheck"/>
     </module>
 </module>
